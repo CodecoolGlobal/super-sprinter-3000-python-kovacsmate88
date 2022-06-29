@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User Story</title>
+</head>
+<body>
+
+<h1>Update user story</h1>
+<form action='{{ url_for('update_story', id=id) }}' method="post">
+    <label for="story-title">Story Title</label>
+    <input id='story-title' name='title' type="text" minlength="5" value={{ user_story['title'] }} required>
+
+    <label for="user-story">User Story</label>
+    <textarea id="user-story" name="story" required>{{ user_story['user_story'] }}</textarea>
+
+    <label for="acceptance-criteria">Acceptance Criteria</label>
+    <textarea id="acceptance-criteria" name="acceptance-criteria" required>{{ user_story['acceptance_criteria'] }}</textarea>
+
+    <label for="business-value">Business Value</label>
+    <input id="business-value" name="value" type="number" min="100" max="500" step="100" value={{ user_story['business_value'] }} required>
+
+    <label for="estimation">Estimation</label>
+    <input id="estimation" name="estimation" type="number" min="0.5" max="40" step="0.5" value={{ user_story['estimation'] }} required>
+
+    <label for="status">Status</label>
+    <select id='status' name="status">
+        {% for status_option in status_options %}
+            {% if status_option == user_story['status'] %}
+                <option value={{ status_option }} selected>{{ status_option }}</option>
+            {% else %}
+            <option value={{ status_option }}>{{ status_option }}</option>
+            {% endif %}
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">Update User Story</button>
+</form>
+</body>
+</html>

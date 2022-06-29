@@ -1,1 +1,33 @@
-...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Stories</title>
+</head>
+<body>
+    <h1>Super Sprinter 3000</h1>
+    <a href="/story">Add new User Story</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Story Title</th>
+            <th>User Story</th>
+            <th>Acceptance Criteria</th>
+            <th>Business Value</th>
+            <th>Estimation</th>
+            <th>Status</th>
+        </tr>
+        {% for row in user_stories %}
+            <tr>
+                <td>{{ row['id'] }}</td>
+                <td><a href={{ url_for('update_story', id=row['id']) }}>{{ row['title'] }}</a></td>
+                <td>{{ row['user_story'] }}</td>
+                <td>{{ row['acceptance_criteria'] }}</td>
+                <td>{{ row['business_value'] }}</td>
+                <td>{{ row['estimation'] }}</td>
+                <td>{{ row['status'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
