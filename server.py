@@ -1,6 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
-
-import data_handler
+from flask import Flask
 
 app = Flask(__name__)
 
